@@ -15,16 +15,12 @@ app.use(express.json());
 // Main Router
 app.use(router);
 
-// For traditional server startup
-if (!ENV.IS_PROD) {
+// Only listen if not on Vercel or in Dev
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
   app.listen(PORT, () => {
-    console.log('\x1b[32m%s\x1b[0m', '-------------------------------------------');
-    console.log('\x1b[32m%s\x1b[0m', `🚀 STATIONERY HUB BACKEND IS LIVE! (v2.0-sequential-ids)`);
-    console.log('\x1b[36m%s\x1b[0m', `✅ Server: http://localhost:${PORT}`);
-    console.log('\x1b[35m%s\x1b[0m', `📡 Database: Supabase Connected Successfully`);
-    console.log('\x1b[32m%s\x1b[0m', '-------------------------------------------');
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
   });
 }
 
 // Export for Vercel
-export default app;
+module.exports = app;
