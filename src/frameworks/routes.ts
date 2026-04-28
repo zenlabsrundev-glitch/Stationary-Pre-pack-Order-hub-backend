@@ -75,6 +75,11 @@ const uploadController = new UploadController(cloudinaryService);
 
 // ---------------- ROUTES ----------------
 
+// Health Check
+router.get('/', (req: any, res: any) => {
+  res.json({ message: 'Stationery Hub API is running!' });
+});
+
 // Auth Routes (Public)
 router.post('/api/auth/login', (req: any, res: any) => authController.login(req, res));
 router.post('/api/auth/register', (req: any, res: any) => authController.register(req, res, registerUseCase));
