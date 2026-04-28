@@ -76,33 +76,33 @@ const uploadController = new UploadController(cloudinaryService);
 // ---------------- ROUTES ----------------
 
 // Auth Routes (Public)
-router.post('/api/auth/login', (req, res) => authController.login(req, res));
-router.post('/api/auth/register', (req, res) => authController.register(req, res, registerUseCase));
-router.post('/api/auth/send-otp', (req, res) => authController.sendOtp(req, res, sendOtpUseCase));
-router.post('/api/auth/verify-otp', (req, res) => authController.verifyOtp(req, res, verifyOtpUseCase));
-router.put('/api/auth/reset-password', (req, res) => authController.resetPassword(req, res, resetPasswordUseCase));
-router.post('/api/auth/admin-recovery', (req, res) => authController.adminRecovery(req, res, userRepository, emailService));
+router.post('/api/auth/login', (req: any, res: any) => authController.login(req, res));
+router.post('/api/auth/register', (req: any, res: any) => authController.register(req, res, registerUseCase));
+router.post('/api/auth/send-otp', (req: any, res: any) => authController.sendOtp(req, res, sendOtpUseCase));
+router.post('/api/auth/verify-otp', (req: any, res: any) => authController.verifyOtp(req, res, verifyOtpUseCase));
+router.put('/api/auth/reset-password', (req: any, res: any) => authController.resetPassword(req, res, resetPasswordUseCase));
+router.post('/api/auth/admin-recovery', (req: any, res: any) => authController.adminRecovery(req, res, userRepository, emailService));
 
 // User Routes
-router.get('/api/users', authenticate, authorize(['admin']), (req, res) => userController.getAllUsers(req, res));
-router.get('/api/users/:id', authenticate, (req, res) => userController.getProfile(req, res));
-router.put('/api/users/:id', authenticate, (req, res) => userController.updateProfile(req, res));
-router.delete('/api/users/:id', authenticate, authorize(['admin']), (req, res) => userController.deleteUser(req, res));
+router.get('/api/users', authenticate, authorize(['admin']), (req: any, res: any) => userController.getAllUsers(req, res));
+router.get('/api/users/:id', authenticate, (req: any, res: any) => userController.getProfile(req, res));
+router.put('/api/users/:id', authenticate, (req: any, res: any) => userController.updateProfile(req, res));
+router.delete('/api/users/:id', authenticate, authorize(['admin']), (req: any, res: any) => userController.deleteUser(req, res));
 
 // Kit Routes
-router.get('/api/kits', (req, res) => kitController.getAllKits(req, res));
-router.get('/api/kits/:id', (req, res) => kitController.getKitById(req, res, getKitByIdUseCase));
-router.post('/api/kits', authenticate, authorize(['admin']), (req, res) => kitController.createKit(req, res, createKitUseCase));
-router.put('/api/kits/:id', authenticate, authorize(['admin']), (req, res) => kitController.updateKit(req, res, updateKitUseCase));
-router.delete('/api/kits/:id', authenticate, authorize(['admin']), (req, res) => kitController.deleteKit(req, res, deleteKitUseCase));
+router.get('/api/kits', (req: any, res: any) => kitController.getAllKits(req, res));
+router.get('/api/kits/:id', (req: any, res: any) => kitController.getKitById(req, res, getKitByIdUseCase));
+router.post('/api/kits', authenticate, authorize(['admin']), (req: any, res: any) => kitController.createKit(req, res, createKitUseCase));
+router.put('/api/kits/:id', authenticate, authorize(['admin']), (req: any, res: any) => kitController.updateKit(req, res, updateKitUseCase));
+router.delete('/api/kits/:id', authenticate, authorize(['admin']), (req: any, res: any) => kitController.deleteKit(req, res, deleteKitUseCase));
 
 // Order Routes
-router.get('/api/orders', authenticate, authorize(['admin']), (req, res) => orderController.getAllOrders(req, res, getAllOrdersUseCase));
-router.get('/api/orders/user/:userId', authenticate, (req, res) => orderController.getUserOrders(req, res, getUserOrdersUseCase));
-router.post('/api/orders', authenticate, (req, res) => orderController.createOrder(req, res));
-router.patch('/api/orders/:id/status', authenticate, authorize(['admin']), (req, res) => orderController.updateStatus(req, res, updateStatusUseCase));
+router.get('/api/orders', authenticate, authorize(['admin']), (req: any, res: any) => orderController.getAllOrders(req, res, getAllOrdersUseCase));
+router.get('/api/orders/user/:userId', authenticate, (req: any, res: any) => orderController.getUserOrders(req, res, getUserOrdersUseCase));
+router.post('/api/orders', authenticate, (req: any, res: any) => orderController.createOrder(req, res));
+router.patch('/api/orders/:id/status', authenticate, authorize(['admin']), (req: any, res: any) => orderController.updateStatus(req, res, updateStatusUseCase));
 
 // Upload Routes
-router.post('/api/upload', authenticate, authorize(['admin']), upload.single('image'), (req, res) => uploadController.uploadImage(req, res));
+router.post('/api/upload', authenticate, authorize(['admin']), upload.single('image'), (req: any, res: any) => uploadController.uploadImage(req, res));
 
 export default router;

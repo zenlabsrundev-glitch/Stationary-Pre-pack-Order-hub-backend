@@ -4,7 +4,7 @@ import { CloudinaryService } from '../../infrastructure/cloudinaryService';
 export class UploadController {
   constructor(private cloudinaryService: CloudinaryService) {}
 
-  async uploadImage(req: Request, res: Response) {
+  async uploadImage(req: any, res: any) {
     try {
       if (!req.file) {
         return res.status(400).json({ message: 'No image file provided' });

@@ -4,7 +4,7 @@ import { CreateOrderUseCase } from '../../application/usecases/createOrder';
 export class OrderController {
   constructor(private createOrderUseCase: CreateOrderUseCase) {}
 
-  async createOrder(req: Request, res: Response) {
+  async createOrder(req: any, res: any) {
     try {
       const orderData = req.body;
       const order = await this.createOrderUseCase.execute(orderData);
@@ -14,7 +14,7 @@ export class OrderController {
     }
   }
 
-  async updateStatus(req: Request, res: Response, updateStatusUseCase: any) {
+  async updateStatus(req: any, res: any, updateStatusUseCase: any) {
     try {
       const { id } = req.params;
       const { status } = req.body;
@@ -25,7 +25,7 @@ export class OrderController {
     }
   }
 
-  async getAllOrders(req: Request, res: Response, getAllOrdersUseCase: any) {
+  async getAllOrders(req: any, res: any, getAllOrdersUseCase: any) {
     try {
       const orders = await getAllOrdersUseCase.execute();
       return res.json(orders);
@@ -34,7 +34,7 @@ export class OrderController {
     }
   }
 
-  async getUserOrders(req: Request, res: Response, getUserOrdersUseCase: any) {
+  async getUserOrders(req: any, res: any, getUserOrdersUseCase: any) {
     try {
       const { userId } = req.params;
       const orders = await getUserOrdersUseCase.execute(userId);

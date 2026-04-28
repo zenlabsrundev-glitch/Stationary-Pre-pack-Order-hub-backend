@@ -8,7 +8,7 @@ export class UserController {
     private deleteUserUseCase: any
   ) {}
 
-  async getAllUsers(req: Request, res: Response) {
+  async getAllUsers(req: any, res: any) {
     try {
       const users = await this.getAllUsersUseCase.execute();
       return res.json(users);
@@ -17,7 +17,7 @@ export class UserController {
     }
   }
 
-  async deleteUser(req: Request, res: Response) {
+  async deleteUser(req: any, res: any) {
     const { id } = req.params;
     try {
       const success = await this.deleteUserUseCase.execute(id);
@@ -28,7 +28,7 @@ export class UserController {
     }
   }
 
-  async getProfile(req: Request, res: Response) {
+  async getProfile(req: any, res: any) {
     const { id } = req.params;
     try {
       const user = await this.getUserProfileUseCase.execute(id);
@@ -39,7 +39,7 @@ export class UserController {
     }
   }
 
-  async updateProfile(req: Request, res: Response) {
+  async updateProfile(req: any, res: any) {
     const { id } = req.params;
     const updates = req.body;
     try {

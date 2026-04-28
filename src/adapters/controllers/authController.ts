@@ -4,7 +4,7 @@ import { LoginUseCase } from '../../application/usecases/login';
 export class AuthController {
   constructor(private loginUseCase: LoginUseCase) {}
 
-  async login(req: Request, res: Response) {
+  async login(req: any, res: any) {
     const { identifier, email, password, requiredRole } = req.body;
     try {
       const result = await this.loginUseCase.execute(identifier || email, password, requiredRole);
@@ -19,7 +19,7 @@ export class AuthController {
     }
   }
 
-  async register(req: Request, res: Response, registerUseCase: any) {
+  async register(req: any, res: any, registerUseCase: any) {
     try {
       const userData = req.body;
       const result = await registerUseCase.execute(userData);
@@ -35,7 +35,7 @@ export class AuthController {
     }
   }
 
-  async sendOtp(req: Request, res: Response, sendOtpUseCase: any) {
+  async sendOtp(req: any, res: any, sendOtpUseCase: any) {
     const { email, type } = req.body;
     try {
       const success = await sendOtpUseCase.execute(email, type || 'forgotPassword');
@@ -48,7 +48,7 @@ export class AuthController {
     }
   }
 
-  async verifyOtp(req: Request, res: Response, verifyOtpUseCase: any) {
+  async verifyOtp(req: any, res: any, verifyOtpUseCase: any) {
     const { email, otp } = req.body;
     try {
       const result = await verifyOtpUseCase.execute(email, otp);
@@ -58,7 +58,7 @@ export class AuthController {
     }
   }
 
-  async resetPassword(req: Request, res: Response, resetPasswordUseCase: any) {
+  async resetPassword(req: any, res: any, resetPasswordUseCase: any) {
     const { email, newPassword } = req.body;
     try {
       await resetPasswordUseCase.execute(email, newPassword);
@@ -68,7 +68,7 @@ export class AuthController {
     }
   }
 
-  async adminRecovery(req: Request, res: Response, userRepository: any, emailService: any) {
+  async adminRecovery(req: any, res: any, userRepository: any, emailService: any) {
     const { email, adminId } = req.body;
     try {
       // Find the admin — either by explicit adminId or by email

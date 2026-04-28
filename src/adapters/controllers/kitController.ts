@@ -4,7 +4,7 @@ import { GetKitsUseCase } from '../../application/usecases/getKits';
 export class KitController {
   constructor(private getKitsUseCase: GetKitsUseCase) {}
 
-  async getAllKits(req: Request, res: Response) {
+  async getAllKits(req: any, res: any) {
     try {
       const kits = await this.getKitsUseCase.execute();
       return res.json(kits);
@@ -13,7 +13,7 @@ export class KitController {
     }
   }
 
-  async getKitById(req: Request, res: Response, getKitByIdUseCase: any) {
+  async getKitById(req: any, res: any, getKitByIdUseCase: any) {
     try {
       const kit = await getKitByIdUseCase.execute(req.params.id);
       if (!kit) return res.status(404).json({ message: 'Kit not found' });
@@ -23,7 +23,7 @@ export class KitController {
     }
   }
 
-  async createKit(req: Request, res: Response, createKitUseCase: any) {
+  async createKit(req: any, res: any, createKitUseCase: any) {
     try {
       const kit = await createKitUseCase.execute(req.body);
       return res.status(201).json(kit);
@@ -32,7 +32,7 @@ export class KitController {
     }
   }
 
-  async updateKit(req: Request, res: Response, updateKitUseCase: any) {
+  async updateKit(req: any, res: any, updateKitUseCase: any) {
     try {
       const kit = await updateKitUseCase.execute(req.params.id, req.body);
       return res.json(kit);
@@ -41,7 +41,7 @@ export class KitController {
     }
   }
 
-  async deleteKit(req: Request, res: Response, deleteKitUseCase: any) {
+  async deleteKit(req: any, res: any, deleteKitUseCase: any) {
     try {
       const success = await deleteKitUseCase.execute(req.params.id);
       if (!success) return res.status(404).json({ message: 'Kit not found' });
