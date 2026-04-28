@@ -34,3 +34,6 @@ coverage/
 # Temp files
 scratch/
 tmp/
+
+# Seed scripts (contains credentials)
+scripts/
