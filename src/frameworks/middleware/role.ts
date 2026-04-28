@@ -6,7 +6,7 @@ import { AuthRequest } from './auth';
  * @param allowedRoles Array of roles that are allowed to access the route.
  */
 export const authorize = (allowedRoles: string[]) => {
-  return (req: AuthRequest, res: Response, next: NextFunction) => {
+  return (req: any, res: any, next: any) => {
     if (!req.user) {
       console.warn('[ROLE ERROR] No user object found on request');
       return res.status(401).json({ message: 'User not authenticated' });
