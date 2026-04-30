@@ -15,6 +15,11 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Root route to prevent "Cannot GET /"
+app.get('/', (req, res) => {
+  res.status(200).send('🚀 Stationery Hub Backend is successfully up and running!');
+});
+
 // Main Router (prefixed with /api to match frontend)
 app.use('/api', router);
 
