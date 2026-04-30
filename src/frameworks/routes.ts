@@ -207,7 +207,7 @@ router.get('/', (req: any, res: any) => {
             </div>
 
             <div class="character-container">
-                <img src="https://media.giphy.com/media/3o7TKMGpxxHOGTdzJC/giphy.gif" class="running-gif" alt="Tom and Jerry Running">
+                <img src="https://media1.giphy.com/media/jyTk0vpfS0pyqkgpZu/giphy.gif" class="running-gif" alt="Tom and Jerry Running">
             </div>
 
             <div class="footer">
