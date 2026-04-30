@@ -10,7 +10,7 @@ const app = express();
 const PORT = ENV.PORT;
 
 app.use(cors({
-  origin: [ENV.FRONTEND_URL, 'http://localhost:3000'],
+  origin: [ENV.FRONTEND_URL, 'https://campush-kit-hub.web.app', 'http://localhost:3000'],
   credentials: true
 }));
 app.use(express.json());
