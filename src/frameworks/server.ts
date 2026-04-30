@@ -15,8 +15,8 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Main Router
-app.use(router);
+// Main Router (prefixed with /api to match frontend)
+app.use('/api', router);
 
 // Only listen if not on Vercel or in Dev
 if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
