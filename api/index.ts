@@ -1,2 +1,3 @@
-const app = require('../src/frameworks/server');
-module.exports = app;
+import app from '../src/frameworks/server';
+
+export default app;

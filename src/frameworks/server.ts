@@ -23,4 +23,4 @@ if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
 }
 
 // Export for Vercel
-module.exports = app;
+export default app;
