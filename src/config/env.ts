@@ -44,9 +44,12 @@ export const validateEnv = () => {
     'SUPABASE_KEY'
   ];
 
+  console.log('[INFO] Validating environment variables...');
   const missing = required.filter(key => !process.env[key]);
 
   if (missing.length > 0) {
-    console.warn(`[WARNING] Missing environment variables: ${missing.join(', ')}`);
+    console.warn(`[CRITICAL] Missing environment variables: ${missing.join(', ')}`);
+  } else {
+    console.log('[SUCCESS] All required environment variables are present.');
   }
 };
