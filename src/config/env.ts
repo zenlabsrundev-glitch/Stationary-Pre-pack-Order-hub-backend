@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import path from 'path';
+import path  from 'path';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -9,7 +9,7 @@ export const ENV = {
   DATABASE_URL: process.env.DATABASE_URL,
   JWT_SECRET: process.env.JWT_SECRET || 'stationery-hub-secure-secret-2026',
   FRONTEND_URL: process.env.FRONTEND_URL || 'https://campush-kit-hub.web.app',
-  
+
   // Email Configuration
   EMAIL: {
     HOST: process.env.EMAIL_HOST,
