@@ -7,7 +7,8 @@ dotenv.config();
 export const ENV = {
   PORT: process.env.PORT || 5000,
   DATABASE_URL: process.env.DATABASE_URL,
-  JWT_SECRET: process.env.JWT_SECRET || 'fallback-secret-key-for-dev',
+  JWT_SECRET: process.env.JWT_SECRET || 'stationery-hub-secure-secret-2026',
+  FRONTEND_URL: process.env.FRONTEND_URL || 'https://campush-kit-hub.web.app',
   
   // Email Configuration
   EMAIL: {
