@@ -81,7 +81,7 @@ router.post('/auth/register', (req: any, res: any) => authController.register(re
 router.post('/auth/send-otp', (req: any, res: any) => authController.sendOtp(req, res, sendOtpUseCase));
 router.post('/auth/verify-otp', (req: any, res: any) => authController.verifyOtp(req, res, verifyOtpUseCase));
 router.put('/auth/reset-password', (req: any, res: any) => authController.resetPassword(req, res, resetPasswordUseCase));
-router.post('/auth/admin-recovery', (req: any, res: any) => authController.adminRecovery(req, res, userRepository, emailService));
+router.post('/auth/recover-credentials', (req: any, res: any) => authController.recoverCredentials(req, res, userRepository, emailService));
 
 // User Routes
 router.get('/users', authenticate, authorize(['admin']), (req: any, res: any) => userController.getAllUsers(req, res));

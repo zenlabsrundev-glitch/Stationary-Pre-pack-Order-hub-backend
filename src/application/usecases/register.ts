@@ -39,11 +39,18 @@ export class RegisterUseCase {
     const createdUser = await this.userRepository.create(newUser);
 
     // 5. Send Credentials Email
-    await this.emailService.sendCredentialsEmail(
-      createdUser.email,
-      generatedUserId,
-      generatedPassword
-    );
+    try {
+      console.log(`[AUTH] Sending registration email to: ${createdUser.email}`);
+      await this.emailService.sendCredentialsEmail(
+        createdUser.email,
+        generatedUserId,
+        generatedPassword
+      );
+      console.log(`[AUTH] Registration email sent successfully to: ${createdUser.email}`);
+    } catch (emailError) {
+      console.error(`[AUTH] Failed to send registration email to ${createdUser.email}:`, emailError);
+      // We don't throw here so the user is still created, but we know it failed.
+    }
 
     return createdUser;
   }

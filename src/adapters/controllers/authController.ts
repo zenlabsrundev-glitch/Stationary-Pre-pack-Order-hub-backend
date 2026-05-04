@@ -68,29 +68,28 @@ export class AuthController {
     }
   }
 
-  async adminRecovery(req: any, res: any, userRepository: any, emailService: any) {
-    const { email, adminId } = req.body;
+  async recoverCredentials(req: any, res: any, userRepository: any, emailService: any) {
+    const { email, userId } = req.body;
     try {
-      // Find the admin — either by explicit adminId or by email
       let user;
-      if (adminId) {
-        user = await userRepository.findById(adminId);
+      if (userId) {
+        user = await userRepository.findById(userId);
       } else {
         user = await userRepository.findByEmail(email);
       }
 
-      if (!user || user.role !== 'admin') {
-        return res.status(404).json({ message: 'Admin account not found' });
+      if (!user) {
+        return res.status(404).json({ message: 'Account not found' });
       }
       
-      // Send the beautiful HTML credentials email to whichever address was entered
+      // Send the beautiful HTML credentials email
       await emailService.sendCredentialsEmail(
-        email,
+        email || user.email,
         user.identifier || user.id,
         user.password
       );
       
-      return res.json({ message: 'Credentials sent to your email' });
+      return res.json({ message: 'Credentials sent successfully' });
     } catch (error: any) {
       return res.status(500).json({ message: error.message });
     }
